@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searchflix</title>
+</head>
+<body>
+   <section>
+        <div class='movie-list-container'>
+            {% for movie in data %}
+            <div class='movie-card'>
+                <h2>{{movie.title}} ({{movie.release_date}})</h2>
+                <h2>{{movie.vote_average}}</h2>
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </section>
+</body>
+</html>
