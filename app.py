@@ -5,6 +5,7 @@ import ssl
 
 app = Flask(__name__)
 
+#kommentar
 
 api_key = '18983e10f268a5371158020929510bfe'
 base_url = 'https://api.themoviedb.org/3/'+'search/movie?api_key='+api_key+'&query='+'fight'
