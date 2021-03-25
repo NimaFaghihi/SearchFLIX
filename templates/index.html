@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,11 @@
 </head>
 <body>
    <section>
+        <form name="search" action="/app" method="get">
+        <input type="text" name="searchbox" pattern='([a-z]{2})-([A-Z]{2}')>
+        <input type="submit" value="Submit">
+        
+        </form>
         <div class='movie-list-container'>
             {% for movie in data %}
             <div class='movie-card'>
@@ -20,4 +25,4 @@
     </div>
     </section>
 </body>
-</html><!---hejhej--> <!---hejigen-->
+</html>
