@@ -21,14 +21,11 @@ cfg.read('api_key.cfg')
 api_key = cfg.get('KEYS', 'api_key', raw='')
 rapid_api_key = cfg.get('KEYS', 'rapid_api_key', raw='')
 
-#api_key = '18983e10f268a5371158020929510bfe' # Vår authentication key. 
 base_url = 'https://api.themoviedb.org/3/'
 search_URL = 'https://api.themoviedb.org/3/'+'search/multi?api_key='+api_key+'&query=' #Sök URL för vårt API. 
 movie_URL = 'https://api.themoviedb.org/3/movie/155?api_key='+api_key+'&language=en-US'
 topMovie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=18983e10f268a5371158020929510bfe&language=en-US&page=1'
 
-
-'''Hämtar användarens input från sökfunktionen i index.html för att sedan göra en sökning med hjälp av API. '''
 
 url = "https://streaming-availability.p.rapidapi.com/get/basic"
 
