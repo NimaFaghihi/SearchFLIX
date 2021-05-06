@@ -11,7 +11,7 @@
     </head>
     <body>
       <style>
-   .input-group {
+        .input-group {
           width: 650px;
         }
         
@@ -66,7 +66,7 @@
                       <button type="button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
                         <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                      </svg> Kontakt
+                      </svg> Kontakt 
                       </button>
                       </a>
                     </li>
@@ -106,17 +106,88 @@
 
           <section>
             <div class='movie-list-container'>
-                {% for movie in data %}
                 <div class='movie-card'>
-                  <a href="/movie/{{movie.id}}">
-                    <h2>{{movie.title}} ({{movie.release_date}})</h2>
+                  <a href="/movie/155">
+                    <h2>Dark Knight (2008)</h2>
                   </a> 
-                    <h2>{{movie.vote_average}}</h2>
-                    <a href="/movie/{{movie.id}}"> 
-                      <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}">
+                    <a href="/movie/155"> 
+                      <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" class="movie-poster" alt="Dark Knight">
                     </a> 
                 </div>
-                {% endfor %}
+                <div class='movie-card'> 
+                  <a href="/movie/122">
+                    <h2>Sagan om konungens återkomst (2003)</h2>
+                  </a> 
+                    <a href="/movie/122"> 
+                      <img src="https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg" class="movie-poster" alt="Sagan om konungens återkomst">
+                    </a> 
+                </div>
+                <div class='movie-card'> 
+                  <a href="/movie/424">
+                    <h2>Schindler's list (1993)</h2>
+                  </a> 
+                    <a href="/movie/424"> 
+                      <img src="https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg" class="movie-poster" alt="Schindler's list"  >
+                    </a> 
+                  </div>
+                  <div class='movie-card'> 
+                    <a href="/movie/120">
+                      <h2>Sagan om ringen - Härskarringen (2001)</h2>
+                    </a> 
+                      <a href="/movie/424"> 
+                        <img src="https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" class="movie-poster" alt="Sagan om ringen"  >
+                      </a> 
+                  </div>
+                  <div class='movie-card'> 
+                    <a href="/movie/27205">
+                      <h2>Inception (2010)</h2>
+                    </a> 
+                      <a href="/movie/27205"> 
+                        <img src="https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg" class="movie-poster" alt="Inception"  >
+                      </a> 
+                  </div>
+                  <div class='movie-card'> 
+                    <a href="/movie/603">
+                      <h2>Matrix (1990)</h2>
+                    </a> 
+                      <a href="/movie/603"> 
+                        <img src="https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg" class="movie-poster" alt="Matrix"  >
+                      </a> 
+                  </div>  
+                  <div class='movie-card'> 
+                    <a href="/movie/121">
+                      <h2>Sagan om de två tornen (2002)</h2>
+                    </a> 
+                      <a href="/movie/121"> 
+                        <img src="https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg" class="movie-poster" alt="Sagan om de två tornen"  >
+                      </a> 
+                  </div>  
+                  <div class='movie-card'> 
+                    <a href="/movie/497">
+                      <h2>Den gröna milen (1999)</h2>
+                    </a> 
+                      <a href="/movie/497"> 
+                        <img src="https://image.tmdb.org/t/p/w500/velWPhVMQeQKcxggNEU8YmIo52R.jpg" class="movie-poster" alt="Den gröna milen"  >
+                      </a> 
+                  </div>  
+                  <div class='movie-card'> 
+                    <a href="/movie/129">
+                      <h2>Spirited Away (2001)</h2>
+                    </a> 
+                      <a href="/movie/129"> 
+                        <img src="https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg" class="movie-poster" alt="Spirited Away"  >
+                      </a> 
+                  </div>  
+                  <div class='movie-card'> 
+                    <a href="/movie/1422">
+                      <h2>The Departed (2006)</h2>
+                    </a> 
+                      <a href="/movie/1422"> 
+                        <img src="https://image.tmdb.org/t/p/w500/kWWAt2FMRbqLFFy8o5R4Zr8cMAb.jpg" class="movie-poster" alt="The Departed"  >
+                      </a> 
+                  </div>                                                                                          
+                </div>
+              
             </div>
         </section>
                  <!-- Footer start-->
