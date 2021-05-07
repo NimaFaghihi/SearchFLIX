@@ -24,6 +24,75 @@
           margin-top: 20px;
         }
 
+        body{
+          text-align: center;
+          background-color: rgb(85, 36, 36);
+          color: white;
+        }
+        .container2 {
+          width: 90%;
+          max-width: 500px;
+          margin: 0 auto;
+          background: rgb(32, 37, 41);
+          padding: 12px;
+          align-self: center;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px  rgb(255, 0, 0);
+          border-radius: 8px;
+          margin-bottom: 20px;
+        }
+
+        .form-group {
+          width: 100%;
+          margin-top: 20px;
+          font-size: 20px;
+        }
+        .form-group input,
+        .form-group textarea {
+          width: 100%;
+          padding: 5px;
+          font-size: 18px;
+          border: 1px solid rgba(128, 128, 128, 0.199);
+          margin-top: 5px;
+        }
+
+        textarea {
+          resize: vertical;
+        }
+        button[type="submit"] {
+          width: 100%;
+          border: none;
+          outline: none;
+          padding: 20px;
+          font-size: 24px;
+          border-radius: 8px;
+          font-family: "Montserrat";
+          color: rgb(255, 255, 255);
+          background-color: rgb(88, 25, 25);
+          text-align: center;
+          cursor: pointer;
+          margin-top: 10px;
+          transition: 0.5s ease background-color;
+        }
+        
+        button[type="submit"]:hover {
+          background-color: rgb(21, 23, 151);
+        }
+
+        .form {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin-bottom: 10px;
+        }
+
+        * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
 
       </style>
 
@@ -76,25 +145,43 @@
       </div>
     </div>
     </nav>
-          <section>
+          <section class="form">
             <div class="container-fluid">
-                <h2>Kontaktuppgifter</h2>
+                <h2>Kontakta oss!</h2>
                 <div class="accordion">
                     <div class="icon"></div>
                     <h5>Nima, Axel, Brwa, Ali</h5>
                 </div>
-                <div class="panel">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                     Neque in itaque excepturi ea earum eaque porro laboriosam cupiditate officiis voluptas eos minima autem perferendis qui, soluta asperiores facilis maxime odio!
-                    </p>
 
 
+                <div class="container2">
+
+                  <div class="form-group">
+                    <label for="firstName">Ditt namn:</label>
+                    <input type="text" id="firstName" name="firstName">
+                  </div>
+
+                  <form action="https://formspree.io/f/moqyjzww" method="POST">
+                    <div class="form-group">
+                    <label for="email">Din E-post:
+                    <input type="email" id="email" name="_replyto">
+                    </label>
+                    </div>
+
+                  <div class="form-group">
+                    <label for="message">Ditt meddelande:</label>
+                    <textarea name="massage" id="message" cols="30" rows="10"></textarea>
+                  </div>
+                  
+                  <button type="submit">Skicka</button>
+                </form>           
                 </div>
             </div>
 
             <script src="app.js"></script>    
-            </div>
-        </section>
+              </div>
+          </section>
+
         <!-- Footer start-->
         <footer class="bg-dark text-center text-white">
           <!-- Grid container -->
