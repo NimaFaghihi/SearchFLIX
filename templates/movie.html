@@ -5,12 +5,22 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/style.css" type="text/css">
+        <link rel="stylesheet" href="/static/style.css" type="text/css">
         <link rel="shortcut icon" type="image/png" href="/static/images/FLIX.png">
         <title>Searchflix</title>
     </head>
     <body>
       <style>
+
+        body{
+          background-color: rgb(85, 36, 36);
+          color: white;
+        }
+
+        a {
+        text-decoration: none;
+        color: white;
+        }
 
         .input-group {
           width: 650px;
@@ -27,17 +37,50 @@
         .movie-poster {
           display: block;
           margin: auto;
+          max-width: 100%;
         }
         
         section {
-            width: 80%;
-            margin: auto;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 10px;
         }
 
+        .knapp {          
+          width: 100%;
+          font-family: "Montserrat";  
+          padding:15px;
+          color: rgb(255, 255, 255);
+          background-color: rgb(58, 7, 7);
+          border-radius:17px;
+          border:1px solid #1f2f47;
+          display:inline-block;
+          cursor:pointer;
+          text-align: center;
+          margin-top: 10px;
+ 
+          text-decoration:none;
+          font-size: 24px;
+          transition: 0.5s ease background-color;
+        }
+
+        
+        .knapp:hover {
+          background-color: rgb(21, 23, 151);
+          color: white;
+        }
+
+
+
+        .filter {
+          margin-top: 10px;
+          text-align: center;
+        }
 
 
       </style>
 
+      
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container justify-content-center">
         <a class="navbar-brand" href="/">
@@ -45,7 +88,7 @@
         </a>
         <form name="search" action="/app" method="get">
           <div class="input-group">
-          <input type="text" name="searchbox" class="form-control" placeholder="Search">
+          <input type="text" name="searchbox" class="form-control" placeholder="Sök efter en film">
           <div class="input-group-append">
             <button class="btn btn-secondary" type="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -91,25 +134,29 @@
             <img src="https://image.tmdb.org/t/p/w500/{{data['poster_path']}}" class="movie-poster" alt="{{data['title']}}">
             <br> {{data['overview']}}
             {% for network in network_data.streamingInfo %}
+            <br>     
+
+           
                 {% if network == 'netflix' %}
-                <a href="{{network_data.streamingInfo[network]['se']['link']}}">
+                
+                <a href="{{network_data.streamingInfo[network]['se']['link']}}"target="_blank" class="knapp">
                 <br><img src="https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg" width=36px height=36px  alt={{network}}>
                 {% elif network == 'disney' %}
-                <a href="{{network_data.streamingInfo[network]['se']['link']}}">
+                <a href="{{network_data.streamingInfo[network]['se']['link']}}" target="_blank" class="knapp">
                 <br><img src="https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg" width=36px height=36px alt={{network}}>
                 {% elif network == 'prime' %}
-                <a href="{{network_data.streamingInfo[network]['se']['link']}}">
+                <a href="{{network_data.streamingInfo[network]['se']['link']}}" target="_blank" class="knapp">
                 <br><img src="https://www.themoviedb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg" width=36px height=36px alt={{network}}>
-                {% endif %}Strömmar nu på {{network}}</a>
+                {% endif %}Strömmar nu på {{network}}. Klicka här för att komma dit! </a> 
             {% endfor %}      
             </div>
-        </section>
-        <section>
-          <form name="country" action="/app" method="get">
+            
+            <form name="country" action="/app" method="get" class="filter">
             <input type="radio" id="country" name="country" value="se" required>
             <label for="se">Sverige</label>
             <input type="radio" id="country" name="country" value="us" required>
             <label for="country">USA</label>
+     
         </section>
          <!-- Footer start-->
          <footer class="bg-dark text-center text-white">
