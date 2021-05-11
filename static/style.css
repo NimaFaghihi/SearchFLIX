@@ -1,5 +1,220 @@
-#d-flex {
-    margin: 0 auto;
-    display: inline-block;
-} 
 
+body{
+    text-align: center;
+    background-color: rgb(85, 36, 36);
+    color: white;
+    } 
+    
+a {
+    text-decoration: none;
+    color: white;
+    }
+
+.input-group {
+    width: 650px;
+    }
+        
+.nav-item {
+    padding: 3px;
+    }
+
+.container-fluid {
+    margin-top: 20px;
+    }
+
+input {
+    text-align: center;
+    }
+
+::-webkit-input-placeholder {
+    text-align: center;
+    }
+  
+:-moz-placeholder {
+    text-align: center;
+    }
+
+.container2 {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgb(32, 37, 41);
+    padding: 12px;
+    align-self: center;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px  rgb(255, 0, 0);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    }
+
+section {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    }
+.form-group {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 20px;
+    }
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid rgba(128, 128, 128, 0.199);
+    margin-top: 5px;
+    }
+
+textarea {
+    resize: vertical;
+    }
+
+button[type="submit"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    font-family: "Montserrat";
+    color: rgb(255, 255, 255);
+    background-color: rgb(88, 25, 25);
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.5s ease background-color;
+    }
+
+button[type="submit"]:hover {
+    background-color: rgb(21, 23, 151);
+    }
+
+.form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    }
+
+.knapp {          
+    width: 100%;
+    font-family: "Montserrat";  
+    padding:15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(58, 7, 7);
+    border-radius:17px;
+    border:1px solid #1f2f47;
+    display:inline-block;
+    cursor:pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-decoration:none;
+    font-size: 24px;
+    transition: 0.5s ease background-color;
+    }
+
+.knapp1 {          
+    width: 400px;
+    height: 350px;
+    font-family: "Montserrat";  
+    padding:30px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(39, 46, 51);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px  rgb(255, 0, 0);
+
+    display:inline-block;
+    cursor:pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-decoration:none;
+    font-size: 24px;
+    transition: 0.5s ease background-color;
+    }
+
+    .knapp1:hover {
+    background-color: rgb(21, 23, 151);
+    color: white;
+    }
+
+.knapp:hover {
+    background-color: rgb(21, 23, 151);
+    color: white;
+    }
+
+.movie-poster {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    }
+
+.movie-card {
+    width: 300px;
+    height: auto;
+    background: rgb(32, 37, 41);
+    padding: 12px;
+    align-self: center;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px  rgb(255, 0, 0);
+    margin: 12px;
+    margin-left:auto;
+    margin-right: auto;
+    transition: 0.5s ease background-color;
+    }
+
+.movie-list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    }
+
+.movie-card:hover {
+    background-color: rgb(21, 23, 151)  ;
+    
+    }
+
+.movie-card > a:hover{
+    color: white;
+    }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+.filter {
+    margin-top: 10px;
+    text-align: center;
+    }
+
+.movie-card:hover {
+    background-color: rgb(21, 23, 151)  ;
+    
+    }
+
+.movie-card > a:hover{
+    color: white;
+    }
+
+.movie-card img{
+    max-width: 100%;
+    }
+
+    /*
+@media screen and (max-width: 600px) {
+    .movie-card{
+        width: 40%;
+        margin: 5px;
+    }
+*/
+
+}
