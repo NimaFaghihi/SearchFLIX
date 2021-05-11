@@ -10,51 +10,6 @@
         <title>Searchflix</title>
     </head>
     <body>
-      <style>
-
-        body{
-          text-align: center;
-          background-color: rgb(85, 36, 36);
-          color: white;
-        }
-
-        .input-group {
-          width: 650px;
-        }
-        
-        .nav-item {
-          padding: 3px;
-        }
-
-        .knapp {          
-          width: 400px;
-          height: 350px;
-          font-family: "Montserrat";  
-          padding:30px;
-          color: rgb(255, 255, 255);
-          background-color: rgb(32, 37, 41);
-          border-radius: 20px;
-          box-shadow: 0px 0px 20px  rgb(255, 0, 0);
-
-          display:inline-block;
-          cursor:pointer;
-          text-align: center;
-          margin-top: 10px;
-          margin-bottom: 10px;
- 
-          text-decoration:none;
-          font-size: 24px;
-          transition: 0.5s ease background-color;
-        }
-
-
-        .knapp:hover {
-          background-color: rgb(21, 23, 151);
-          color: white;
-        }
-
-
-      </style>
       
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container justify-content-center">
@@ -63,7 +18,7 @@
           </a>
           <form name="search" action="/app" method="get">
             <div class="input-group">
-            <input type="text" name="searchbox" class="form-control" placeholder="Search">
+            <input type="text" name="searchbox" class="form-control" placeholder="Sök efter en film">
             <div class="input-group-append">
               <button class="btn btn-secondary" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -142,25 +97,25 @@
           <div class="container">
             <div class="row ">
               <div class="col-md-6">
-                <a href="/top_netflix" class="knapp">
+                <a href="/top_netflix" class="knapp1">
                 <img src="/static/images/netflix.jpg" class="justify-content-center align-items-center" alt="..." width="250px" height="250px">
                 <h5>Top 10 Netflix</h5>
                 </a>
               </div>
               <div class="col-md-6">
-                <a href="/top_disney" class="knapp">
+                <a href="/top_disney" class="knapp1">
                 <img src="/static/images/disney.png" class="" alt="..." width="250px" height="250px">
                 <h5>Top 10 Disney+(Netflix placeholder)</h5>
                 </a>
               </div>
               <div class="col-md-6">
-                <a href="/top_prime" class="knapp">
+                <a href="/top_prime" class="knapp1">
                 <img src="/static/images/prime.png" class="rounded_mx-auto_d-block" alt="..." width="250px" height="250px">
                 <h5>Top 10 Amazon Prime(Netflix placeholder)</h5>
                 </a>
               </div>
               <div class="col-md-6">
-                <a href="/top_hbo" class="knapp">
+                <a href="/top_hbo" class="knapp1">
                 <img src="/static/images/HBO.png" class="rounded_mx-auto_d-block" alt="..." width="250px" height="250px">
                 <h5>Top 10 HBO (Netflix placeholder)</h5>
                 </a>

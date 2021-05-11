@@ -9,95 +9,26 @@
         <link rel="shortcut icon" type="image/png" href="/static/images/FLIX.png">
         <title>Searchflix</title>
     </head>
+
     <body>
-      <style>
-
-        body{
-          background-color: rgb(85, 36, 36);
-          color: white;
-        }
-
-        a {
-        text-decoration: none;
-        color: white;
-        }
-
-        .input-group {
-          width: 650px;
-        }
-        
-        .nav-item {
-          padding: 3px;
-        }
-
-        .container-fluid {
-          margin-top: 20px;
-        }
-
-        .movie-poster {
-          display: block;
-          margin: auto;
-          max-width: 100%;
-        }
-        
-        section {
-          width: 80%;
-          margin: auto;
-          margin-bottom: 10px;
-        }
-
-        .knapp {          
-          width: 100%;
-          font-family: "Montserrat";  
-          padding:15px;
-          color: rgb(255, 255, 255);
-          background-color: rgb(58, 7, 7);
-          border-radius:17px;
-          border:1px solid #1f2f47;
-          display:inline-block;
-          cursor:pointer;
-          text-align: center;
-          margin-top: 10px;
- 
-          text-decoration:none;
-          font-size: 24px;
-          transition: 0.5s ease background-color;
-        }
-
-        
-        .knapp:hover {
-          background-color: rgb(21, 23, 151);
-          color: white;
-        }
-
-
-
-        .filter {
-          margin-top: 10px;
-          text-align: center;
-        }
-
-
-      </style>
-
       
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container justify-content-center">
-        <a class="navbar-brand" href="/">
-          <img src="/static/images/ikon.png" alt="" width="130" height="50">
-        </a>
-        <form name="search" action="/app" method="get">
-          <div class="input-group">
-          <input type="text" name="searchbox" class="form-control" placeholder="Sök efter en film">
-          <div class="input-group-append">
-            <button class="btn btn-secondary" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-            </button>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container justify-content-center">
+          <a class="navbar-brand" href="/">
+            <img src="/static/images/ikon.png" alt="" width="130" height="50">
+          </a>
+          <form name="search" action="/app" method="get">
+            <div class="input-group">
+            <input type="text" name="searchbox" class="form-control" placeholder="Sök efter en film">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
       <div class="navbar_text" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -120,16 +51,16 @@
           </li>
           <li class="nav-item">
             <a href="#">
-            <button type="button" class="btn btn-secondary"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-            </svg> Logga in 
-            </button>
-          </a>
+              <button type="button" class="btn btn-secondary"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+              </svg> Logga in 
+              </button>
+            </a>
           </li>
         </ul>
       </div>
-    </div>
-    </nav>
+      </div>
+      </nav>
          <section>
             <img src="https://image.tmdb.org/t/p/w500/{{data['poster_path']}}" class="movie-poster" alt="{{data['title']}}">
             <br> {{data['overview']}}
