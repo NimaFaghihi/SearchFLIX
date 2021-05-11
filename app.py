@@ -76,11 +76,12 @@ def index():
 def contact(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('contact.html')
+
  
 @app.route('/top_rated_movies')
 def topMovie_function(): 
     '''
-    Funktion för att generera top 20 filmer.
+    Funktion för att generera top 10 filmer.
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     conn = requests.urlopen(topMovie_url)
@@ -111,5 +112,5 @@ def top_disney():
 if __name__ == '__main__':
     app.run(debug=True)
  
- 
+
  
