@@ -79,11 +79,11 @@
             <div class='movie-list-container'>
                 {% for movie in data %}
                 <div class='movie-card'>
-                  <a href="/movie/{{movie.id}}">
+                  <a href="/movie/{{movie.id}}" title="Klicka här för att få mer information om filmen">
                     <h2>{{movie.title}} ({{movie.release_date}})</h2>
                   </a> 
                     <h2>{{movie.vote_average}}</h2>
-                    <a href="/movie/{{movie.id}}"> 
+                    <a href="/movie/{{movie.id}}" title="Klicka här för att få mer information om filmen"> 
                       <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}">
                     </a> 
                 </div>
