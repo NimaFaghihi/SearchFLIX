@@ -32,6 +32,10 @@ def getQueryString(movie_id):
  
 def getMovieURL(movie_id):
     return ('https://api.themoviedb.org/3/movie/{}?api_key='+api_key+'&language=en-US').format(movie_id)
+
+def getMovieCredits(movie_id):
+    return ('https://api.themoviedb.org/3/movie/{}/credits?api_key='+api_key+'&language=en-US').format(movie_id)
+
  
 headers = {
     'x-rapidapi-key': rapid_api_key,    
@@ -59,7 +63,11 @@ def movie_details(movie_id):
     conn = requests.urlopen(getMovieURL(movie_id))
     json_data = json.loads(conn.read())
     network = rq.request('GET', url, headers=headers, params=getQueryString(movie_id))
-    return render_template('movie.html', data=json_data, network_data=json.loads(network.text))
+    conn2 = requests.urlopen(getMovieCredits(movie_id))
+    json_data2 = json.loads(conn2.read())
+    return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2)
+
+
 
 @app.route('/faq')
 def faq(): 
@@ -76,12 +84,11 @@ def index():
 def contact(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('contact.html')
-
  
 @app.route('/top_rated_movies')
 def topMovie_function(): 
     '''
-    Funktion för att generera top 10 filmer.
+    Funktion för att generera top 20 filmer.
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     conn = requests.urlopen(topMovie_url)
@@ -112,5 +119,5 @@ def top_disney():
 if __name__ == '__main__':
     app.run(debug=True)
  
-
+ 
  
