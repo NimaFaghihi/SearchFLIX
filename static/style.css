@@ -1,8 +1,6 @@
 
 body{
-    text-align: center;
-    background-color: rgb(85, 36, 36);
-    color: white;
+    text-align: center;   
     } 
     
 a {
@@ -42,7 +40,7 @@ input {
     padding: 12px;
     align-self: center;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px  rgb(255, 0, 0);
+
     border-radius: 8px;
     margin-bottom: 20px;
     }
@@ -119,14 +117,13 @@ button[type="submit"]:hover {
     }
 
 .knapp1 {          
-    width: 400px;
-    height: 350px;
+    width: 300px;
+    height: 340px;
     font-family: "Montserrat";  
-    padding:30px;
+    padding:25px;
     color: rgb(255, 255, 255);
     background-color: rgb(39, 46, 51);
     border-radius: 20px;
-    box-shadow: 0px 0px 20px  rgb(255, 0, 0);
 
     display:inline-block;
     cursor:pointer;
@@ -162,7 +159,6 @@ button[type="submit"]:hover {
     padding: 12px;
     align-self: center;
     border-radius: 20px;
-    box-shadow: 0px 0px 20px  rgb(255, 0, 0);
     margin: 12px;
     margin-left:auto;
     margin-right: auto;
@@ -216,5 +212,7 @@ button[type="submit"]:hover {
         margin: 5px;
     }
 */
+
+
 
 }
