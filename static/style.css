@@ -217,4 +217,7 @@ button[type="submit"]:hover {
 
 
 
+    .panel a{
+        color: blue;
+    }
 }
