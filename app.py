@@ -1,4 +1,14 @@
-from flask import Flask, render_template, request
+from flask import ( 
+    Flask,
+    g,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for
+    
+)
+
 import json
 import urllib.request as requests
 import urllib.parse
@@ -6,19 +16,22 @@ import ssl
 import cgi
 import requests as rq
 import configparser
- 
- 
+from http import cookies
+
 app = Flask(__name__, static_url_path='/static')
  
 #api från themoviedb.com
  
 form = cgi.FieldStorage()
 searchterm =  form.getvalue('searchbox')
- 
+C = cookies.SimpleCookie()
+
 cfg = configparser.ConfigParser()
 cfg.read('api_key.cfg')
 api_key = cfg.get('KEYS', 'api_key', raw='')
 rapid_api_key = cfg.get('KEYS', 'rapid_api_key', raw='')
+app.secret_key = 'somesecretkeythatonlyishouldknow'
+
  
 base_url = 'https://api.themoviedb.org/3/'
 search_URL = 'https://api.themoviedb.org/3/search/movie?api_key='+api_key+'&query=' #Sök URL för vårt API. 
@@ -115,6 +128,59 @@ def top_hbo():
 def top_disney():
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topDisney.html')
+
+
+class User:
+    def __init__(self, id, username, password):
+        self.id = id
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return f'<user: {self.username}>'
+
+users = []
+users.append(User(id=1, username='Anthony', password='password'))
+users.append(User(id=2, username='Becca', password='secret'))
+users.append(User(id=3, username='Carlos', password='somethingsimple'))
+
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
+
+
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session.pop('user_id', None)
+
+        username = request.form['username']
+        password = request.form['password']
+
+        user = [x for x in users if x.username == username][0]
+        if user and user.password == password:
+            session['user_id'] = user.id
+            return redirect(url_for('profile'))
+
+        return redirect(url_for('login'))
+
+    return render_template('login.html')
+
+
+
+
+@app.route('/profile')
+def profile():
+    if not g.user:
+        return redirect(url_for('login'))
+
+    return render_template('profile.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
