@@ -84,11 +84,21 @@ def index():
 def contact(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('contact.html')
+
+@app.route('/about_us')
+def about_us(): 
+    ssl._create_default_https_context =  ssl._create_unverified_context
+    return render_template('aboutUs.html')
+
+@app.route('/instructions')
+def instructions(): 
+    ssl._create_default_https_context =  ssl._create_unverified_context
+    return render_template('instructions.html')
  
 @app.route('/top_rated_movies')
 def topMovie_function(): 
     '''
-    Funktion för att generera top 20 filmer.
+    Funktion för att generera top 10 filmer.
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     conn = requests.urlopen(topMovie_url)
