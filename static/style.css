@@ -5,8 +5,18 @@ body{
     
 a {
     text-decoration: none;
-    color: white;
+    color: blue;
     }
+
+a:hover {
+    text-decoration: none;
+    color: red;
+}
+
+.text{
+    margin-top: 10px;
+}
+
 
 .input-group {
     width: 650px;
@@ -48,7 +58,7 @@ input {
     }
 
 section {
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-bottom: 10px;
     }
@@ -103,8 +113,8 @@ button[type="submit"]:hover {
     width: 100%;
     font-family: "Montserrat";  
     padding:15px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(58, 7, 7);
+    color: blue;
+    background-color: rgba(153, 157, 168, 0.527) ;
     border-radius:17px;
     border:1px solid #1f2f47;
     display:inline-block;
@@ -124,70 +134,82 @@ button[type="submit"]:hover {
     font-family: "Montserrat";  
     padding:25px;
     color: rgb(255, 255, 255);
-    background-color: rgb(39, 46, 51);
+    background-color: rgba(39, 46, 51, 0.87);
     border-radius: 20px;
 
-    display:inline-block;
-    cursor:pointer;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+display:inline-block;
+cursor:pointer;
+text-align: center;
+margin-top: 10px;
+margin-bottom: 10px;
 
-    text-decoration:none;
-    font-size: 24px;
-    transition: 0.5s ease background-color;
-    }
+text-decoration:none;
+font-size: 24px;
+transition: 0.5s ease background-color;
+}
 
-    .knapp1:hover {
-    background-color: rgb(21, 23, 151);
-    color: white;
-    }
+.knapp1:hover {
+background-color: rgb(0, 4, 255);
+color: white;
+}
 
 .knapp:hover {
-    background-color: rgb(21, 23, 151);
-    color: white;
+    background-color: rgba(220, 220, 226, 0.568);
     }
 
-.movie-poster {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    }
+*{
+    font-family: 'Poppins', sans-serif;
+        -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
 
-.movie-card {
-    width: 300px;
-    height: auto;
-    background: rgb(32, 37, 41);
-    padding: 12px;
-    align-self: center;
-    border-radius: 20px;
-    margin: 12px;
-    margin-left:auto;
-    margin-right: auto;
-    transition: 0.5s ease background-color;
-    }
 
-.movie-list-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    }
+img {
+        -webkit-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+}
 
-.movie-card:hover {
-    background-color: rgb(21, 23, 151)  ;
-    
-    }
 
-.movie-card > a:hover{
-    color: white;
-    }
+.movie_card{
+    padding: 0 !important;
+    width: 15rem;
+    margin:14px; 
+    border-radius: 10px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+.movie_card img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 20rem;
+}
+.movie_info{
+    color: #5e5c5c;
+}
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    }
+.movie_info i{
+    font-size: 20px;
+}
+.card-title{
+    width: 80%;
+   
+}
+
+
+
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+        -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
 
 .filter {
     margin-top: 10px;
@@ -199,9 +221,6 @@ button[type="submit"]:hover {
     
     }
 
-.movie-card > a:hover{
-    color: white;
-    }
 
 .movie-card img{
     max-width: 100%;
@@ -216,8 +235,13 @@ button[type="submit"]:hover {
 */
 
 
+.panel a{
+    color: blue;
+}
 
-    .panel a{
-        color: blue;
-    }
+
+.actors{
+    display: flex;
+    flex-flow: row wrap;
+}
 }
