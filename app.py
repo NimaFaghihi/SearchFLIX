@@ -1,3 +1,6 @@
+'''
+Importerar ramverket flask med tillhörande nödvändiga moduler
+'''
 from flask import ( 
     Flask,
     g,
@@ -8,7 +11,9 @@ from flask import (
     url_for
     
 )
-
+'''
+Importerar övriga nödvändiga moduler
+'''
 import json
 import urllib.request as requests
 import urllib.parse
@@ -83,27 +88,42 @@ def movie_details(movie_id):
 
 
 @app.route('/faq')
+'''
+Route för FAQ-sidan
+'''
 def faq(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('faq.html')
  
 @app.route('/')
+'''
+Route för startsidan
+'''
 def index(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('index.html')
 
  
 @app.route('/contact')
+'''
+Route för kontakt-sidan
+'''
 def contact(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('contact.html')
 
 @app.route('/about_us')
+'''
+Route för about-us sidan
+'''
 def about_us(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('aboutUs.html')
 
 @app.route('/instructions')
+'''
+Route för instruktions-sida
+'''
 def instructions(): 
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('instructions.html')
@@ -120,22 +140,34 @@ def topMovie_function():
  
 @app.route('/top_netflix')
 def top_netflix(): 
+    '''
+    Funktion som hämtar och presenterar en top 10 lista för Netflix
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topNetflix.html')
 
 
 @app.route('/top_prime')
 def top_prime(): 
+    '''
+    Funktion som hämtar och presenterar en top 10 lista för Prime
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topPrime.html')
 
 @app.route('/top_hbo')
 def top_hbo(): 
+    '''
+    Funktion som hämtar och presenterar en top 10 lista för HBO
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topHBO.html')
 
 @app.route('/top_disney')
 def top_disney():
+    '''
+    Funktion som hämtar och presenterar en top 10 lista för Disney
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topDisney.html')
 
@@ -167,6 +199,9 @@ def before_request():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    '''
+    Funktion under utveckling, skall låta användare logga in
+    '''
     if request.method == 'POST':
         session.pop('user_id', None)
 
@@ -187,6 +222,10 @@ def login():
 
 @app.route('/profile')
 def profile():
+    '''
+    Funktion under utveckling, skall låta användare visa sin profil efter inloggning
+    '''
+    
     if not g.user:
         return redirect(url_for('login'))
 
