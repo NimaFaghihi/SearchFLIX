@@ -88,43 +88,43 @@ def movie_details(movie_id):
 
 
 @app.route('/faq')
-'''
-Route för FAQ-sidan
-'''
 def faq(): 
+    '''
+    Route för FAQ-sidan
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('faq.html')
  
 @app.route('/')
-'''
-Route för startsidan
-'''
 def index(): 
+    '''
+    Route för startsidan
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('index.html')
 
  
 @app.route('/contact')
-'''
-Route för kontakt-sidan
-'''
 def contact(): 
+    '''
+    Route för kontakt-sidan
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('contact.html')
 
 @app.route('/about_us')
-'''
-Route för about-us sidan
-'''
 def about_us(): 
+    '''
+    Route för about-us sidan
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('aboutUs.html')
 
 @app.route('/instructions')
-'''
-Route för instruktions-sida
-'''
 def instructions(): 
+    '''
+    Route för instruktions-sida
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('instructions.html')
  
