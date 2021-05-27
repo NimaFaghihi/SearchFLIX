@@ -1,6 +1,7 @@
 
 body{
     text-align: center;   
+
     } 
     
 a {
@@ -110,22 +111,7 @@ button[type="submit"]:hover {
     }
 
 .knapp {          
-    width: 100%;
-    font-family: "Montserrat";  
-    padding:15px;
-    color: blue;
-    background-color: rgba(153, 157, 168, 0.527) ;
-    border-radius:17px;
-    border:1px solid #1f2f47;
-    display:inline-block;
-    cursor:pointer;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    text-decoration:none;
-    font-size: 24px;
-    transition: 0.5s ease background-color;
+    text-decoration: none;
     }
 
 .knapp1 {          
@@ -153,9 +139,6 @@ background-color: rgb(0, 4, 255);
 color: white;
 }
 
-.knapp:hover {
-    background-color: rgba(220, 220, 226, 0.568);
-    }
 
 *{
     font-family: 'Poppins', sans-serif;
@@ -244,4 +227,12 @@ img {
     display: flex;
     flex-flow: row wrap;
 }
+
+
+.btn-dark{
+    background-color: black;
+}
+
+.btn-primary{
+    background-color: #060628;
 }

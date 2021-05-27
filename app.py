@@ -44,9 +44,9 @@ topMovie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key='+api_key+'
  
  
 url = 'https://streaming-availability.p.rapidapi.com/get/basic'
- 
-def getQueryString(movie_id):
-    return {'country':'se','tmdb_id':'movie/{}'.format(movie_id)}
+
+def getQueryString(movie_id, country):
+    return {'country':country,'tmdb_id':'movie/{}'.format(movie_id)}
  
 def getMovieURL(movie_id):
     return ('https://api.themoviedb.org/3/movie/{}?api_key='+api_key+'&language=en-US').format(movie_id)
@@ -77,6 +77,22 @@ def movie_details(movie_id):
     '''
     Test route för att hämta streaming tillgänglighet för film. 
     '''
+    country = (request.args.get('country') or "se").lower() # Hämtar land från get parametern or default se(Sverige)
+    ssl._create_default_https_context =  ssl._create_unverified_context
+    conn = requests.urlopen(getMovieURL(movie_id))
+    json_data = json.loads(conn.read())
+    network = rq.request('GET', url, headers=headers, params=getQueryString(movie_id, country))
+    conn2 = requests.urlopen(getMovieCredits(movie_id))
+    json_data2 = json.loads(conn2.read())
+    return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2, country=country)
+
+
+ 
+@app.route('/movie/<movie_id>/test')
+def test(movie_id): 
+    '''
+    Test route för att hämta streaming tillgänglighet för film. 
+    '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     conn = requests.urlopen(getMovieURL(movie_id))
     json_data = json.loads(conn.read())
@@ -84,7 +100,6 @@ def movie_details(movie_id):
     conn2 = requests.urlopen(getMovieCredits(movie_id))
     json_data2 = json.loads(conn2.read())
     return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2)
-
 
 
 @app.route('/faq')

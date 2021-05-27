@@ -98,13 +98,67 @@
     </div>
   </nav>
 
-
   <section>
     <div class="container mt-5">
       <img src="https://image.tmdb.org/t/p/w500/{{data['poster_path']}}" class="movie-poster" alt="{{data['title']}}">
       <br>
+      {% for network in network_data.streamingInfo %}
+      <br>
+      {% if network == 'netflix' and country in network_data.streamingInfo[network] %}
+       <div>
+        <div>
+          <a class="btn btn-dark" href="{{network_data.streamingInfo[network][country]['link']}}" role="button">
+          <img src="https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg" width=36px height=36px alt={{network}}>Strömmar nu på {{network}}. Klicka här för att komma dit! </a>   
+        </div>
+      {% elif network == 'disney' and country in network_data.streamingInfo[network]  %}
+        <div>
+          <div>
+          <a class="btn btn-primary" href="{{network_data.streamingInfo[network][country]['link']}}" role="button">
+          <img src="https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg" width=36px height=36px alt={{network}}>Strömmar nu på {{network}}. Klicka här för att komma dit! </a>             <br>
+        </div>
+      {% elif network == 'prime' and country in network_data.streamingInfo[network]  %}
+          <div>
+            <a class="btn btn-light" href="{{network_data.streamingInfo[network][country]['link']}}" role="button">
+            <img src="https://www.themoviedb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg" width=36px height=36px alt={{network}}>Strömmar nu på {{network}}. Klicka här för att komma dit! </a>      
+        </div>
+        {% else %}
+        <button type="button" class="btn btn-dark">Tyvärr finns inte denna film tillgänglig i ditt land!</button>
+      </div>
+      {% endif %} 
+      {% endfor %}
+      <br>
       <p class="text">{{data['overview']}}</p>
+        </div>
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{network_data.video}}?rel=0" allowfullscreen></iframe>
+      </div>
+  </section>
+  <section>
+    <form method="get" id="c_form">
+      <select name="country" id="country">
+        <option value="se">Sverige</option>
+        <option value="us">USA</option>
+        <option value="gb">Storbritannien</option>
+        <option value="dk">Danmark</option>
+        <option value="de">Tyskland</option>
+        <option value="no">Norge</option>
+
+    </select>
+
+    </form>
+    <script>
+      document.getElementById('country').addEventListener('change', ()=>{
+        document.getElementById('c_form').submit();
+      });
+      let current_url = new URL(location.href);
+      let country = current_url.searchParams.get("country");
+      document.getElementById('country').value = country || "se";
+    </script>
+    
+    
+
       <div class="row justify-content-center">
+
 
         {% for name in data2.cast[:10]%}
 
@@ -116,36 +170,9 @@
         </div>
         {% endfor %}
       </div>
-      {% for network in network_data.streamingInfo %}
-      <br>
-      {% if network == 'netflix' %}
-      <a href="{{network_data.streamingInfo[network]['se']['link']}}" target="_blank" class="knapp"
-        title="Länk till filmen på Netflix">
-        <br><img src="https://www.themoviedb.org/t/p/original/9A1JSVmSxsyaBK4SUFsYVqbAYfW.jpg" width=36px height=36px
-          alt={{network}}>
-        {% elif network == 'disney' %}
-        <a href="{{network_data.streamingInfo[network]['se']['link']}}" target="_blank" class="knapp"
-          title="Länk till filmen på Disney">
-          <br><img src="https://www.themoviedb.org/t/p/original/dgPueyEdOwpQ10fjuhL2WYFQwQs.jpg" width=36px height=36px
-            alt={{network}}>
-          {% elif network == 'prime' %}
-          <a href="{{network_data.streamingInfo[network]['se']['link']}}" target="_blank" class="knapp"
-            title="Länk till filmen på Prime">
-            <br><img src="https://www.themoviedb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg" width=36px
-              height=36px alt={{network}}>
-            {% endif %}Strömmar nu på {{network}}. Klicka här för att komma dit! </a>
-
-          {% endfor %}
 
 
-    </div>
-  </section>
-  <section>
-    <form name="country" action="/app" method="get">
-      <input type="radio" id="country" name="country" value="se" required>
-      <label for="se">Sverige</label>
-      <input type="radio" id="country" name="country" value="us" required>
-      <label for="country">USA</label>
+
   </section>
   <!-- Footer start-->
   <footer class="bg-dark text-center text-white">
