@@ -44,3 +44,30 @@ Extrahera samtliga filer från .zip filen till flask mappen och kör flask.
 # Github
 https://github.com/NimaFaghihi/SearchFLIX
 
+# Instruktioner för koppling av databas.
+
+För att nyttja login-funktionen av applikationen krävs en koppling till databas med specifik utformnad.
+Koppling av databas:
+
+steg 1.
+För att upprätta koppling måste pyodbc instaleras. Detta sker exempelvis genom följande kommand i cmd: pip install byodbc
+
+steg 2.
+För att uppräta en koppling till databasen behöver servernamn ersättas med det lokala namnet. 
+
+steg3.
+För att programmet ska kunna interagera korrekt med databasen, behöver en databas skapas med namn: SearchFLIX
+Därefter behöver följande queries köras: 
+
+create table new_user1
+(
+	[id] int not null identity PRIMARY KEY,
+	[username] varchar (50) Not null,
+	[password] varchar (50) Not null,
+	[email] varchar (100) Not null
+	
+)
+
+Nu är databasen kopplad och utformad för att vara kompatibelt med programmet.
+För att registrera ett konto enklast kan detta göras genom gränssnittet för appen.
+Det går även bra att direkt in i databasen skapa ett konto genom queries.
