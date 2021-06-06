@@ -21,7 +21,17 @@ import ssl
 import cgi
 import requests as rq
 import configparser
+import re
 from http import cookies
+import pyodbc
+
+server = 'localhost'
+username = 'NimaFaghihi'
+password = 'Nima1234'
+database = 'SearchFLIX'
+cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+
 
 app = Flask(__name__, static_url_path='/static')
  
@@ -45,14 +55,30 @@ topMovie_url = 'https://api.themoviedb.org/3/movie/top_rated?api_key='+api_key+'
  
 url = 'https://streaming-availability.p.rapidapi.com/get/basic'
 
-def getQueryString(movie_id, country):
+def get_recommendations(movie_id):
+    '''
+    Rekommenderar film baserat på filmid - Ali & Nima & Axel
+    '''
+    return('https://api.themoviedb.org/3/movie/{}/recommendations?api_key='+api_key+'&language=en-US&page=1').format(movie_id)
+
+def get_query_string(movie_id, country):
+    ''' 
+    Hämtar query från användare
+    '''
     return {'country':country,'tmdb_id':'movie/{}'.format(movie_id)}
  
-def getMovieURL(movie_id):
+def get_movie_URL(movie_id):
+    '''
+    Hämtar movie URL
+    '''
     return ('https://api.themoviedb.org/3/movie/{}?api_key='+api_key+'&language=en-US').format(movie_id)
 
-def getMovieCredits(movie_id):
+def get_movie_credits(movie_id):
+    '''
+    Hämtar film credits - Ali & Nima
+    '''
     return ('https://api.themoviedb.org/3/movie/{}/credits?api_key='+api_key+'&language=en-US').format(movie_id)
+
 
  
 headers = {
@@ -63,7 +89,7 @@ headers = {
 @app.route('/app')
 def search_function(): 
     '''
-    Hämtar användarens input från sökfunktionen i index.html för att sedan göra en sökning med hjälp av API.
+    Hämtar användarens input från sökfunktionen i index.html för att sedan göra en sökning med hjälp av API. - Ali & Nima
     '''
     search = request.args.get('searchbox')
     ssl._create_default_https_context =  ssl._create_unverified_context
@@ -75,32 +101,18 @@ def search_function():
 @app.route('/movie/<movie_id>')
 def movie_details(movie_id): 
     '''
-    Test route för att hämta streaming tillgänglighet för film. 
+    Route för att hämta information och tillgänglighet för film. - ALi
     '''
     country = (request.args.get('country') or "se").lower() # Hämtar land från get parametern or default se(Sverige)
     ssl._create_default_https_context =  ssl._create_unverified_context
-    conn = requests.urlopen(getMovieURL(movie_id))
+    conn = requests.urlopen(get_movie_URL(movie_id))
     json_data = json.loads(conn.read())
-    network = rq.request('GET', url, headers=headers, params=getQueryString(movie_id, country))
-    conn2 = requests.urlopen(getMovieCredits(movie_id))
+    network = rq.request('GET', url, headers=headers, params=get_query_string(movie_id, country))
+    conn2 = requests.urlopen(get_movie_credits(movie_id))
+    conn3 = requests.urlopen(get_recommendations(movie_id))
     json_data2 = json.loads(conn2.read())
-    return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2, country=country)
-
-
- 
-@app.route('/movie/<movie_id>/test')
-def test(movie_id): 
-    '''
-    Test route för att hämta streaming tillgänglighet för film. 
-    '''
-    ssl._create_default_https_context =  ssl._create_unverified_context
-    conn = requests.urlopen(getMovieURL(movie_id))
-    json_data = json.loads(conn.read())
-    network = rq.request('GET', url, headers=headers, params=getQueryString(movie_id))
-    conn2 = requests.urlopen(getMovieCredits(movie_id))
-    json_data2 = json.loads(conn2.read())
-    return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2)
-
+    json_data3 = json.loads(conn3.read())
+    return render_template('movie.html', data=json_data, network_data=json.loads(network.text), data2=json_data2, data3=json_data3, country=country)
 
 @app.route('/faq')
 def faq(): 
@@ -146,7 +158,7 @@ def instructions():
 @app.route('/top_rated_movies')
 def topMovie_function(): 
     '''
-    Funktion för att generera top 10 filmer.
+    Funktion för att generera top 10 filmer. - Ali
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     conn = requests.urlopen(topMovie_url)
@@ -156,7 +168,7 @@ def topMovie_function():
 @app.route('/top_netflix')
 def top_netflix(): 
     '''
-    Funktion som hämtar och presenterar en top 10 lista för Netflix
+    Funktion som hämtar och presenterar en top 10 lista för Netflix - Ali
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topNetflix.html')
@@ -165,7 +177,7 @@ def top_netflix():
 @app.route('/top_prime')
 def top_prime(): 
     '''
-    Funktion som hämtar och presenterar en top 10 lista för Prime
+    Funktion som hämtar och presenterar en top 10 lista för Prime - Ali
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topPrime.html')
@@ -173,7 +185,7 @@ def top_prime():
 @app.route('/top_hbo')
 def top_hbo(): 
     '''
-    Funktion som hämtar och presenterar en top 10 lista för HBO
+    Funktion som hämtar och presenterar en top 10 lista för HBO - Ali
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topHBO.html')
@@ -181,70 +193,77 @@ def top_hbo():
 @app.route('/top_disney')
 def top_disney():
     '''
-    Funktion som hämtar och presenterar en top 10 lista för Disney
+    Funktion som hämtar och presenterar en top 10 lista för Disney - Ali
     '''
     ssl._create_default_https_context =  ssl._create_unverified_context
     return render_template('topDisney.html')
 
 
-class User:
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
-
-    def __repr__(self):
-        return f'<user: {self.username}>'
-
-users = []
-users.append(User(id=1, username='Anthony', password='password'))
-users.append(User(id=2, username='Becca', password='secret'))
-users.append(User(id=3, username='Carlos', password='somethingsimple'))
-
-@app.before_request
-def before_request():
-    g.user = None
-
-    if 'user_id' in session:
-        user = [x for x in users if x.id == session['user_id']][0]
-        g.user = user
-
-
-
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods =['GET', 'POST'])
 def login():
     '''
-    Funktion under utveckling, skall låta användare logga in
+    Funktion som låter användare logga in  - Nima & Axel
     '''
-    if request.method == 'POST':
-        session.pop('user_id', None)
-
+    msg = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
+        cursor = cnxn.cursor()
+        cursor.execute('SELECT * FROM new_user1 WHERE username = ? AND password = ?', username, password)
+        account = cursor.fetchone()
+        if account:
+            session['loggedin'] = True
+        
+            session['username'] = username
+            msg = 'Logged in successfully !'
+            return render_template('profile.html', msg = msg)
+        else:
+            msg = 'Incorrect username / password !'
+    return render_template('login.html', msg = msg)
 
-        user = [x for x in users if x.username == username][0]
-        if user and user.password == password:
-            session['user_id'] = user.id
-            return redirect(url_for('profile'))
 
-        return redirect(url_for('login'))
-
-    return render_template('login.html')
-
-
-
-
-@app.route('/profile')
-def profile():
+@app.route('/logout')
+def logout():
     '''
-    Funktion under utveckling, skall låta användare visa sin profil efter inloggning
+    Funktion som låter användare logga ut  - Nima & Axel
     '''
-    
-    if not g.user:
-        return redirect(url_for('login'))
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username', None)
+    return redirect(url_for('index'))
+  
 
-    return render_template('profile.html')
+@app.route('/register', methods =['GET', 'POST'])
+def register():
+    '''
+    Funktion som låter användare skapa konto om sådant inte redan finns - Nima & Axel
+    '''
+    msg = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form :
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+        cursor = cursor = cnxn.cursor()
+        cursor.execute('SELECT * FROM new_user1 WHERE username = ?', username)
+        account = cursor.fetchone()
+        if account:
+            msg = 'Account already exists !'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            msg = 'Invalid email address !'
+        elif not re.match(r'[A-Za-z0-9]+', username):
+            msg = 'Username must contain only characters and numbers !'
+        elif not username or not password or not email:
+            msg = 'Please fill out the form !'
+        else:
+            cursor.execute('INSERT INTO new_user1 ( username, password, email) VALUES ( ?, ?, ?)', (username, password, email, ))
+            cnxn.commit()
+            msg = 'You have successfully registered !'
+    elif request.method == 'POST':
+        msg = 'Please fill out the form !'
+        return redirect(url_for('index'))
+    return render_template('register.html', msg = msg)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

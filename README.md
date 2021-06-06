@@ -7,10 +7,6 @@
 
 Searchflix är en webbapplikation som är skapad för att samla utbudet av filmer från dem olika streamingtjänsterna. Använderen har i dagsläget möjlighet att söka på en film för att sedan få fram information om vart filmen kan streamas. I en kommande version kommer användaren även att ha möjlighet till att filtrera vilket land hen befinner sig i för att filtrera utbudet per land. 
 
-# Testa vår hemsida
-
-http://searchflix.pythonanywhere.com/
-
 # Instruktioner för API nyckel.
 
 För att köra vår kod behövs två API nycklar. 
